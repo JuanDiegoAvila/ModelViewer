@@ -55,6 +55,8 @@ layout (location = 0) out vec4 fragColor;
 in vec3 ourColor;
 in vec2 fragCoord;
 
+
+
 uniform float time;
 
 void main()
@@ -278,7 +280,7 @@ shader4 = compileProgram(
     compiled_fragment_shader4
 )
 
-glUseProgram(shader)
+glUseProgram(shader2)
 
 vertex = []
 for ver in model.vertices:
@@ -365,8 +367,8 @@ glClearColor(0.0, 0.0, 0.0, 1.0)
 r = 0
 changeShader = False
 shaderIndex = 0
-shaders = [shader, shader2, shader3, shader4]
-currentShader = shader
+shaders = [shader2, shader3, shader4, shader]
+currentShader = shader2
 vector = glm.vec3(0, 1, 0)
 
 prev_time = pygame.time.get_ticks()
@@ -384,7 +386,6 @@ while running:
     color3 = random.random()
 
     color = glm.vec3(color1, color2, color3)
-
     glUniform3fv(
         glGetUniformLocation(currentShader, "color"),
         1,
